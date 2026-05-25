@@ -19,4 +19,11 @@ public class SlotRepository {
         }
         return Optional.empty();
     }
+
+    public void releaseSlot(UUID slotId) {
+        ParkingSlot slot = slots.get(slotId);
+        if (slot != null) {
+            slot.setOccupied(false);
+        }
+    }
 }

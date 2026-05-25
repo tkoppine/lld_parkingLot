@@ -21,4 +21,8 @@ public class SlotService {
 
         return Optional.of(slot.get().getId());
     }
+
+    public void releaseSlot(UUID slotId) {
+        slotRepository.releaseSlot(slotId);
+    }
 }

@@ -27,7 +27,7 @@ public class EntryController {
                 return new EntryResult(false, "No available slot for vehicle type: " + vehicleType, null, null);
             }
 
-            Optional<UUID> ticketId = ticketService.generateTicket(vehicle.getId(), slotId.get());
+            Optional<UUID> ticketId = ticketService.generateTicket(vehicle.getId(), slotId.get(), vehicleType);
 
             if (ticketId.isEmpty()) {
                 return new EntryResult(false, "Failed to generate ticket for vehicle: " + licensePlate, null, null);

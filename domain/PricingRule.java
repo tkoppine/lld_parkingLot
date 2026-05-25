@@ -13,4 +13,17 @@ public class PricingRule {
         this.ratePerHour = ratePerHour;
         this.flatRate = flatRate;
     }
+
+    public UUID getId() {
+        return id;
+    }
+    public Vehicle.VehicleType getVehicleType() {
+        return vehicleType;
+    }
+    public double getRatePerHour() {
+        return ratePerHour;
+    }
+    public double getFlatRate() {
+        return flatRate;
+    }
 }

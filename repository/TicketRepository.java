@@ -1,6 +1,7 @@
 package repository;
 import domain.Ticket;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,7 +17,11 @@ public class TicketRepository {
         tickets.put(ticket.getId(), ticket);
     }
 
-    public Ticket findById(UUID ticketId) {
-        return tickets.get(ticketId);
+    public Optional<Ticket> findById(UUID ticketId) {
+        return Optional.ofNullable(tickets.get(ticketId));
+    }
+
+    public void deactivateTicket(UUID ticketId) {
+        tickets.remove(ticketId);
     }
 }
