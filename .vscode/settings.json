@@ -1,9 +1,0 @@
-{
-  "java.project.sourcePaths": [
-    "."
-  ],
-  "files.watcherExclude": {
-    "**/target": true
-  },
-  "java.project.referencedLibraries": []
-}
