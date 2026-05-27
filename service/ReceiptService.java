@@ -18,7 +18,7 @@ public class ReceiptService {
 
     public String generateReceiptText(Receipt receipt, Ticket ticket) {
         System.out.println("[SERVICE] Generating receipt text for: " + receipt.getId());
-        
+
         StringBuilder receiptText = new StringBuilder();
         receiptText.append("📄 Receipt:\n");
         receiptText.append("=== PARKING RECEIPT ===\n");
@@ -30,7 +30,7 @@ public class ReceiptService {
         receiptText.append("Total Fee: $").append(String.format("%.2f", receipt.getTotalFee())).append("\n");
         receiptText.append("Payment Status: ").append(receipt.getPaymentStatus()).append("\n");
         receiptText.append("=====================\n");
-        
+
         System.out.println("[SERVICE] Receipt text generated successfully");
         return receiptText.toString();
     }

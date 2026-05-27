@@ -7,39 +7,43 @@ import service.SlotService;
 import service.TicketService;
 
 public class EntryController {
-    private final TicketService ticketService;
     private final SlotService slotService;
+    private final TicketService ticketService;
 
-    public EntryController(TicketService ticketService, SlotService slotService) {
-        this.ticketService = ticketService;
+    public EntryController(SlotService slotService, TicketService ticketService) {
         this.slotService = slotService;
-        System.out.println("EntryController initialized with TicketService and SlotService.");
+        this.ticketService = ticketService;
+
+        System.out.println("[Entry_Controller] initiated.");
     }
 
     public EntryResult enterVehicle(String licensePlate, Vehicle.VehicleType vehicleType) {
         try {
+            // Create a vehicle instance
             Vehicle vehicle = new Vehicle(licensePlate, vehicleType);
-            System.out.println("[Controller] Vehicle created: " + vehicle.getId());
-            
+            System.out.println("[Entry_Controller] Vehicle Created");
+
+            // Allocate a parking slot for the vehicle
             Optional<UUID> slotId = slotService.allocateSlot(vehicleType);
 
             if (slotId.isEmpty()) {
                 return new EntryResult(false, "No available slot for vehicle type: " + vehicleType, null, null);
             }
 
+            // Generate a parking ticket for the vehicle
             Optional<UUID> ticketId = ticketService.generateTicket(vehicle.getId(), slotId.get(), vehicleType);
 
             if (ticketId.isEmpty()) {
                 return new EntryResult(false, "Failed to generate ticket for vehicle: " + licensePlate, null, null);
             }
 
+            System.out.println("[Entry_Controller] Vehicle Entered: " + licensePlate + ", Slot ID: " + slotId.get()
+                    + ", Ticket ID: " + ticketId.get());
             return new EntryResult(true, "Vehicle entered successfully", ticketId.get(), slotId.get());
         } catch (Exception e) {
             return new EntryResult(false, "Error processing entry: " + e.getMessage(), null, null);
         }
     }
-
-
 
     public static class EntryResult {
         private final boolean success;
@@ -57,12 +61,15 @@ public class EntryController {
         public boolean isSuccess() {
             return success;
         }
+
         public String getMessage() {
             return message;
         }
+
         public UUID getTicketId() {
             return ticketId;
         }
+
         public UUID getSlotId() {
             return slotId;
         }

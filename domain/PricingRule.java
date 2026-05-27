@@ -1,4 +1,5 @@
 package domain;
+
 import java.util.UUID;
 
 public class PricingRule {
@@ -17,13 +18,29 @@ public class PricingRule {
     public UUID getId() {
         return id;
     }
+
     public Vehicle.VehicleType getVehicleType() {
         return vehicleType;
     }
+
     public double getRatePerHour() {
         return ratePerHour;
     }
+
     public double getFlatRate() {
         return flatRate;
+    }
+
+    public void updateHourlyRate(double newRate) {
+        this.ratePerHour = newRate;
+    }
+
+    public void updateFlatRate(double newFlatRate) {
+        this.flatRate = newFlatRate;
+    }
+
+    public void updateRates(double newRatePerHour, double newFlatRate) {
+        this.ratePerHour = newRatePerHour;
+        this.flatRate = newFlatRate;
     }
 }

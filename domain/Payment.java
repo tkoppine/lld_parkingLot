@@ -1,4 +1,5 @@
 package domain;
+
 import java.util.UUID;
 
 public class Payment {
@@ -16,7 +17,7 @@ public class Payment {
         SUCCESS, FAILED, PENDING
     }
 
-    public Payment (UUID ticketId, double amount, PaymentGateway paymentGateway) {
+    public Payment(UUID ticketId, double amount, PaymentGateway paymentGateway) {
         this.id = UUID.randomUUID();
         this.amount = amount;
         this.ticketId = ticketId;
@@ -27,21 +28,27 @@ public class Payment {
     public UUID getId() {
         return id;
     }
+
     public double getAmount() {
         return amount;
     }
+
     public UUID getTicketId() {
         return ticketId;
     }
+
     public PaymentGateway getPaymentGateway() {
         return paymentGateway;
     }
+
     public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }
+
     public void markAsScuccess() {
         this.paymentStatus = PaymentStatus.SUCCESS;
     }
+
     public void markAsFailed() {
         this.paymentStatus = PaymentStatus.FAILED;
     }

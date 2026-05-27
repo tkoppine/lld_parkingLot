@@ -1,4 +1,5 @@
 package domain;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -20,15 +21,19 @@ public class Ticket {
     public UUID getId() {
         return id;
     }
+
     public UUID getVehicleId() {
         return vehicleId;
     }
+
     public UUID getSlotId() {
         return slotId;
     }
+
     public LocalDateTime getEntryTime() {
         return entryTime;
     }
+
     public Vehicle.VehicleType getVehicleType() {
         return vehicleType;
     }

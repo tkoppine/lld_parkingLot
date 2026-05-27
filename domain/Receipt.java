@@ -1,4 +1,5 @@
 package domain;
+
 import domain.Payment.PaymentStatus;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -21,21 +22,27 @@ public class Receipt {
     public UUID getId() {
         return id;
     }
+
     public UUID getTicketId() {
         return ticketId;
     }
+
     public LocalDateTime getExitTime() {
         return exitTime;
     }
+
     public double getTotalFee() {
         return totalFee;
     }
+
     public void markAsPaid() {
         this.paymentStatus = PaymentStatus.SUCCESS;
     }
+
     public void markAsFailed() {
         this.paymentStatus = PaymentStatus.FAILED;
     }
+
     public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }
