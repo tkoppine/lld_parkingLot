@@ -21,7 +21,7 @@ public class SlotRepository {
     public Optional<ParkingSlot> allocateSlot(Vehicle.VehicleType vehicleType) {
         // Find an available slot for the given vehicle type
         for (ParkingSlot slot : slots.values()) {
-            if (!slot.isOcuupied() && slot.getSlotType() == vehicleType) {
+            if (!slot.isOccupied() && slot.getSlotType() == vehicleType) {
                 slot.setOccupied(true);
                 System.out.println(
                         "[Slot_Repository] allocated slot: " + slot.getId() + " for vehicle type: " + vehicleType);

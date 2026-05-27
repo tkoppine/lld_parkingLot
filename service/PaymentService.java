@@ -31,7 +31,7 @@ public class PaymentService {
         boolean success = defaultGateway.pay(ticketId, amount);
 
         if (success) {
-            payment.markAsScuccess();
+            payment.markAsSuccess();
         } else {
             payment.markAsFailed();
         }

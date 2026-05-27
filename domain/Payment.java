@@ -45,7 +45,7 @@ public class Payment {
         return paymentStatus;
     }
 
-    public void markAsScuccess() {
+    public void markAsSuccess() {
         this.paymentStatus = PaymentStatus.SUCCESS;
     }
 
