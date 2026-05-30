@@ -19,7 +19,7 @@ public class SlotService {
         Optional<ParkingSlot> slot = slotRepository.allocateSlot(vehicleType);
         System.out.println("[Slot_Service] allocated slot for vehicle type: " + vehicleType);
 
-        return Optional.ofNullable(slot.orElse(null).getId());
+        return slot.map(ParkingSlot::getId);
     }
 
     public void releaseSlot(UUID slotId) {
